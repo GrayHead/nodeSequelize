@@ -1,0 +1,11 @@
+let express = require("express");
+let app = express();
+let userRouter = require('./routes/userRouter');
+let authRouter = require('./routes/authRouter');
+app.use(express.json());
+app.use(express.urlencoded({extended: true}));
+app.use('/users', userRouter);
+app.use('/auth', authRouter);
+app.listen(3000);
+let db = require('./database').getInstance();
+db.setModels();
