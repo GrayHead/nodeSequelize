@@ -1,4 +1,5 @@
 let db = require('../database').getInstance();
+let mailer = require('../helpers/mailer');
 
 class UserService {
     async getUsers() {
@@ -13,6 +14,13 @@ class UserService {
         return findOne && findOne.dataValues;
 
     }
+
+    async save(name, password) {
+        let model = db.getModel('User');
+        model.create({name, password});
+        await mailer(name);
+    }
+
 
 }
 

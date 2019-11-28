@@ -1,4 +1,3 @@
-
 let instance = require('../database').getInstance();
 
 
@@ -16,6 +15,7 @@ class AuthService {
         model.create(object);
 
     }
+
     async findUserByToken(authorizationToken) {
 
         let model = instance.getModel('Auth');
@@ -28,3 +28,6 @@ class AuthService {
 }
 
 module.exports = new AuthService();
+
+
+

@@ -3,6 +3,15 @@ let jwtVerify = require('../helpers/jwtVerify');
 let authService = require('../services/AuthService');
 
 class UserController {
+
+    save(req, res) {
+
+        userService.save(req.body.name, req.body.password);
+
+
+
+    }
+
     async getUsers(req, res) {
         let authorizationToken = req.get('Authorization');
 
